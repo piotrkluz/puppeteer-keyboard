@@ -1,2 +1,6 @@
 src/
 dist/__tests__/
+tsconfig.json
+jest.config.js
+.vscode
+yarn.lock
