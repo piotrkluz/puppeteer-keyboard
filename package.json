@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "jest",
-    "publish": "tsc && jest",
+    "prepublish": "tsc && jest",
     "upgrade": "yarn upgrade-intractive --latest"
   }
 }
