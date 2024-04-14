@@ -59,7 +59,7 @@ const puppeteer = require('puppeteer');
   await page.goto('https://duckduckgo.com');
 
   const input = await page.$("input[name=q]");
-  const kb = new Keyboard(page, { delay: 50 });
+  const kb = new Keyboard(page, { delay: 250 });
 
   await kb.type("puppeteer[ArrowDown][ArrowDown][Enter]", input);
 
