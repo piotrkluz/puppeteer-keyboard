@@ -1,10 +1,10 @@
 import { Page, ElementHandle } from "puppeteer";
-import { KeyCombination } from "./Keycombination";
+import { KeyCombination } from "./keyCombination";
 
 export class Keyboard {
-    constructor(private page: Page, private options: {delay: number} = null) {}
+    constructor(private page: Page, private options: {delay: number} = {delay: 0}) {}
     /**
-     * @param text Text to type, examples: 
+     * @param text Text to type, examples:
      * - Some text
      * - Some text[Ctrl+A][Backspace]other text
      * - mark[Ctrl+Shift+ArrowLeft]
@@ -25,7 +25,7 @@ export class Keyboard {
 
     /**
      * Splits text to fragments, example:
-     * "text[Shift]other[Ctrl+S]" 
+     * "text[Shift]other[Ctrl+S]"
      * -> will split into array: ["text", "[Shift]", "other", "[Ctrl+S]" ]
      * @param text
      */
@@ -43,7 +43,7 @@ export class Keyboard {
     private async typeText(text: string) {
         await this.page.keyboard.type(text, this.options);
     }
-    
+
     private async typeKeyCombination(text: string) {
         const delay = this.options && this.options.delay && 0;
 

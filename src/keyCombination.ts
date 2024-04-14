@@ -1,11 +1,11 @@
-import * as USKeyboardLayout from "puppeteer-core/lib/USKeyboardLayout";
-import { Page } from "puppeteer";
+import { _keyDefinitions }  from "puppeteer-core/lib/cjs/puppeteer/common/USKeyboardLayout.js";
+import { Page, KeyInput } from "puppeteer";
 
 export class KeyCombination {
-    private keys: string[];
+    private keys: KeyInput[];
 
     /**
-     * @param keyString Examples: 
+     * @param keyString Examples:
      * - [Enter]
      * - [Ctrl+Shift+A]
      * - ArrowLeft
@@ -15,12 +15,12 @@ export class KeyCombination {
             .replace(/[\[\]]/g, "")
             .replace("Ctrl", "Control") // some hack ;)
             .split("+")
-            .map(e => e.trim());
-        
+            .map(e => e.trim()) as KeyInput[];
+
         // validate
         for(const key of this.keys) {
             if(!this.isKeyboardKey(key)) {
-                throw new Error(`Keys combination not recognized ${keyString}. 
+                throw new Error(`Keys combination not recognized ${keyString}.
                 Key code "${key}" not exist in USKeyboardLayout
                 Available key codes are here: https://github.com/GoogleChrome/puppeteer/blob/master/lib/USKeyboardLayout.js`)
             }
@@ -47,7 +47,7 @@ export class KeyCombination {
     }
 
     private isKeyboardKey(key: string) {
-        return USKeyboardLayout[key] !== undefined;
+        return _keyDefinitions[key] !== undefined;
     }
 
     private wait(ms) {
