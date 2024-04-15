@@ -8,7 +8,6 @@
 > It converts string representation like "text[Enter]" into keyboard keys sequence.
 Very helpful in page automation.
 
-
 ## Getting started
 ### Installation
 
@@ -25,13 +24,13 @@ const { Keyboard } = require("puppeteer-keyboard");
 const input = await page.$("my.input");
 const kb = new Keyboard(page);
 
-//Write text and delete it
+// Write text and delete it
 await kb.type("Some text", input);
 await kb.type("[Ctrl+A]", input);
 await kb.type("[Delete]", input);
 
 // Of course it can be in one line:
-await kb.type("Some text[Ctrl+A][Delete]", input);
+await kb.type("Some text[Ctrl+a][Delete]", input);
 
 // If field is already focused, the second parameter can be ommited:
 await input.focus();
@@ -40,7 +39,7 @@ await kb.type("Some text[Ctrl+A][Delete]");
 // or
 await input.focus();
 await kb.type("Some text");
-await kb.type("[Ctrl+A]");
+await kb.type("[Ctrl+a]");
 await kb.type("[Delete]");
 
 // Keyboard schroucuts can be larger (there is no limit of keys):
@@ -73,12 +72,9 @@ const puppeteer = require('puppeteer');
 ## Available keys
 Library accepts all keys available on the keyboard.
 Full list of keycodes are on official puppeteer page:
-https://github.com/GoogleChrome/puppeteer/blob/master/lib/USKeyboardLayout.js
-
+https://github.com/puppeteer/puppeteer/blob/d3f0e6ca095e546a71d2792c5fe42974b1d24d11/packages/puppeteer-core/src/common/USKeyboardLayout.ts#L27
 
 ## Contribution
-github repo: https://github.com/piotrkluz/puppeteer-keyboard
+GitHub Repo: https://github.com/piotrkluz/puppeteer-keyboard
+
 NPM: https://www.npmjs.com/package/puppeteer-keyboard
-
-
-
